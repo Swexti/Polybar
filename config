@@ -1,0 +1,298 @@
+;==========================================================
+;
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;==========================================================
+
+#-----------------------------------------------------------------------------#
+#----------------------------- Global settings -------------------------------#
+#-----------------------------------------------------------------------------#
+
+[colors]
+include-file = ~/.config/polybar/colors
+include-file = ~/.config/polybar/Option-modules
+
+[global/wm]
+margin-top = 2
+margin-bottom = 0
+
+[settings]
+throttle-output = 5
+throttle-output-for = 10
+throttle-input-for = 30
+compositing-background = source
+compositing-foreground = source
+compositing-overline = source
+compositing-underline = source
+compositing-border = source
+screenchange-reload = false
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
+pseudo-transparency = false
+
+#-----------------------------------------------------------------------------#
+#----------------------------- base bar --------------------------------------#
+#-----------------------------------------------------------------------------#
+[section/base_panel]
+monitor = 
+enable-ipc = trueoverride-redirect = false
+bottom = false
+height = 40
+width = 100%
+offset-y = 0
+offset-x = 0
+fixed-center = true
+spacing = 0
+module-margin-left = 0
+module-margin-right = 0
+padding-left = 3
+padding-right = 0
+line-size = 0
+line-color = #f00
+border-size =0
+border-color = ${colors.background}
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+font-0 = "rissole:size=8;2"
+font-1 = "Font Awesome 5 Free:style=Solid:pixelsize=9;3"
+font-2 = "Font Awesome 5 Free:style=Regular:pixelsize=9;3"
+font-3 = "Font Awesome 5 Brands:pixelsize=9;3"
+font-4 = Iosevka Nerd Font:style=Medium:size=12;2
+
+#-----------------------------------------------------------------------------#
+#------------------------------- Primary bar ---------------------------------#
+#-----------------------------------------------------------------------------#
+[bar/full]
+inherit = section/base_panel
+override-redirect = false
+bottom = true
+height = 32
+width = 100%
+
+line-size = 6
+line-color = #f00
+border-size =0
+border-color = ${colors.fg}
+
+
+modules-left = option_menu i3
+modules-right = mpd xwindow keyboard date
+padding-left = 2
+padding-right = 2
+
+module-margin-left = 2
+module-margin-right = 0
+
+background = #292d3e
+foreground = #d0b4d1
+
+font-0 = "rissole:size=8;2"
+font-1 = Iosevka Nerd Font:style=Medium:size=12;3
+font-2 = "waffle:size=9;3"
+
+#-----------------------------------------------------------------------------#
+#-----------------------------------------------------------------------------#
+#------------------------------- App launcher --------------------------------#
+#-----------------------------------------------------------------------------#
+;[bar/applauncher]
+;inherit = section/base_panel
+;override-redirect = true
+;bottom = false
+;radius-top = 0
+;radius-bottom = 8
+;height= 40
+;width = 100
+;offset-x = 0.0%
+;offset-y = 2.0%
+;border-size =0
+;border-color = ${colors.background}
+
+;module-margin-left = 1
+;module-margin-right = 1
+;padding-left = 1
+;padding-right = 1
+
+;font-0 = "DejaVu Sans:style=Bold:pixelsize=18;3"
+;font-1 = "Font Awesome 5 Free:style=Solid:pixelsize=18;3"
+;font-2 = "Font Awesome 5 Free:style=Regular:pixelsize=18;3"
+;font-3 = "Font Awesome 5 Brands:pixelsize=18;3"
+;font-4 = Iosevka Nerd Font:style=Medium:size=18;3
+
+;background = #7E807B
+;foreground = #0D1918
+
+;modules-center = chrome 
+
+#-----------------------------------------------------------------------------#
+#------------------------------ Options menu ---------------------------------#
+#-----------------------------------------------------------------------------#
+[bar/option_menu]
+inherit = section/base_panel
+override-redirect = true
+background = ${colors.bg}
+foreground = ${colors.foreground}
+width = 190
+offset-x = 13
+offset-y = 615
+# Small font for the slider bars
+font-4 = "DejaVu Sans Mono:pixelsize=8;3"
+;-------------------------------------------------------
+
+[bar/option_menu1]
+inherit = bar/option_menu
+height = 30
+offset-y = 675
+modules-right = power
+radius-top = 8
+line-size =1
+padding-right = 3
+background = #3d4054
+foreground = ${colors.bg}
+font-0 = "DejaVu Sans:style=Bold:pixelsize=10;3"
+font-1 = "Font Awesome 5 Free:style=Solid:pixelsize=10;3"
+font-2 = "Font Awesome 5 Free:style=Regular:pixelsize=10;3"
+font-3 = "Font Awesome 5 Brands:pixelsize=10;3"
+font-4 = Iosevka Nerd Font:style=Medium:size=10;3
+;-------------------------------------------------------
+
+[bar/option_menu2]
+inherit = bar/option_menu
+height= 20
+offset-y = 700
+modules-center = welcome
+padding-left = 0
+font-0 = "DejaVu Sans:style=Bold:pixelsize=8;3"
+font-1 = "Font Awesome:size=11;3"
+
+background = #3d4054
+foreground = ${colors.bg}
+;-------------------------------------------------------
+
+[bar/option_menu3]
+inherit = bar/option_menu
+height= 20
+offset-y = 717
+modules-center = uriel
+font-0 = "DejaVu Sans:style=Bold:pixelsize=8;3"
+font-1 = "Font Awesome:size=11;3"
+font-2 = "Font Awesome:size=11;3"
+font-3 = "Font Awesome:size=11;3"
+padding-right = 0
+
+background = #3d4054
+foreground = ${colors.bg}
+;-------------------------------------------------------
+
+[bar/option_menu4]
+inherit = bar/option_menu
+offset-y = 735
+modules-left = chrome
+font-0 = "DejaVu Sans:style=Bold:pixelsize=8;3"
+font-1 = "Font Awesome:size=11;3"
+font-2 = "Font Awesome:size=11;3"
+font-3 = "Font Awesome:size=11;3"
+padding-left = 7
+
+background = #3d4054
+foreground = ${colors.bg}
+;-------------------------------------------------------
+
+[bar/option_menu5]
+inherit = bar/option_menu
+offset-y = 775
+modules-right = twitter
+
+font-0 = "DejaVu Sans:style=Bold:pixelsize=8;3"
+font-1 = "Font Awesome:size=11;3"
+padding-right = 7
+
+background = #3d4054
+foreground = ${colors.bg}
+;-------------------------------------------------------
+
+[bar/option_menu6]
+inherit = bar/option_menu
+override-redirect = true
+width = 190
+height= 40
+offset-y = 814
+offset-x = 13
+modules-left = gmail
+module-margin-left = 0
+module-margin-right = 0
+
+background = #3d4054
+foreground = ${colors.bg}
+
+font-0 = JetBrains Mono:size=9;2
+font-1 = "FontAwesome:size=11;3"
+padding-left = 7
+padding-right = 0
+;-------------------------------------------------------
+
+[bar/option_menu7]
+inherit = bar/option_menu
+override-redirect = true
+width = 190
+height= 50
+offset-y = 848
+offset-x = 13
+radius-bottom = 8
+radius-top = 8
+
+background = #36394d
+foreground = ${colors.bg}
+
+;modules-right = right1
+modules-center = style
+
+font-0 = JetBrains Mono:size=6;2
+font-2 = Iosevka Nerd Font:style=Medium:size=18;3
+padding-left = 2
+module-margin-left = 2
+
+[bar/right]
+inherit = section/base_panel
+override-redirect = true
+height = 500
+width = 360
+offset-y = 363
+offset-x = 3
+fixed-center = true
+radius-top = 8
+radius-botttom = 10
+;border-size =2
+border-color = #292d3e
+border-bottom = 2
+
+background = #292d3e
+foreground = #d0b4d1
+
+padding-right = 2
+modules-right = options_close
+
+font-0 = "rissole:size=8;-240"
+font-1 = "Font Awesome 5 Free:style=Solid:pixelsize=9;-240"
+font-2 = "Font Awesome 5 Free:style=Regular:pixelsize=9;-240"
+font-3 = "Font Awesome 5 Brands:pixelsize=9;-240"
+font-4 = Iosevka Nerd Font:style=Medium:size=12;-240
+
+
+[bar/left]
+inherit = section/base_panel
+padding-right = 2
+modules-right = volume_bar
+
+
+
+
+
+
+
+
